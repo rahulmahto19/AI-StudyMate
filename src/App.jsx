@@ -4,10 +4,18 @@ import {
   Route,
 } from "react-router-dom";
 
+// ==========================================
+// Public Pages
+// ==========================================
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import AdminDashboard from "./pages/AdminDashboard";
+import ForgotPassword from "./pages/ForgotPassword";
+
+// ==========================================
+// Student Pages
+// ==========================================
 
 import StudentLayout from "./pages/student/StudentLayout";
 import StudentDashboard from "./pages/student/StudentDashboard";
@@ -20,13 +28,20 @@ import Placement from "./pages/student/Placement";
 import Progress from "./pages/student/Progress";
 import StudentProfile from "./pages/student/StudentProfile";
 
+// ==========================================
+// Admin
+// ==========================================
+
+import AdminDashboard from "./pages/AdminDashboard";
+
 function App() {
   return (
     <BrowserRouter>
-
       <Routes>
 
-        {/* Public Routes */}
+        {/* ======================================
+            PUBLIC ROUTES
+        ======================================= */}
 
         <Route
           path="/"
@@ -43,71 +58,153 @@ function App() {
           element={<Register />}
         />
 
+        <Route
+          path="/forgot-password"
+          element={<ForgotPassword />}
+        />
 
-        {/* Student Routes */}
+        {/* ======================================
+            STUDENT ROUTES
+        ======================================= */}
 
         <Route
           path="/student"
           element={<StudentLayout />}
         >
 
+          {/* Dashboard */}
+
           <Route
             path="dashboard"
-            element={<StudentDashboard />}
+            element={
+              <StudentDashboard />
+            }
           />
+
+          {/* ==================================
+              AI CHAT
+          =================================== */}
+
+          <Route
+            path="ai-chat"
+            element={
+              <AIChat />
+            }
+          />
+
+          {/* Alias:
+              /student/chat
+          */}
 
           <Route
             path="chat"
-            element={<AIChat />}
+            element={
+              <AIChat />
+            }
           />
+
+          {/* ==================================
+              PDF SUMMARY
+          =================================== */}
 
           <Route
             path="pdf-summary"
-            element={<PDFSummary />}
+            element={
+              <PDFSummary />
+            }
           />
+
+          {/* ==================================
+              NOTES
+          =================================== */}
 
           <Route
             path="notes"
-            element={<Notes />}
+            element={
+              <Notes />
+            }
           />
+
+          {/* ==================================
+              VOICE NOTES
+          =================================== */}
 
           <Route
             path="voice-notes"
-            element={<VoiceNotes />}
+            element={
+              <VoiceNotes />
+            }
           />
+
+          {/* ==================================
+              STUDY PLANNER
+          =================================== */}
+
+          <Route
+            path="study-planner"
+            element={
+              <StudyPlanner />
+            }
+          />
+
+          {/* Alias:
+              /student/planner
+          */}
 
           <Route
             path="planner"
-            element={<StudyPlanner />}
+            element={
+              <StudyPlanner />
+            }
           />
+
+          {/* ==================================
+              PLACEMENT
+          =================================== */}
 
           <Route
             path="placement"
-            element={<Placement />}
+            element={
+              <Placement />
+            }
           />
+
+          {/* ==================================
+              PROGRESS
+          =================================== */}
 
           <Route
             path="progress"
-            element={<Progress />}
+            element={
+              <Progress />
+            }
           />
+
+          {/* ==================================
+              PROFILE
+          =================================== */}
 
           <Route
             path="profile"
-            element={<StudentProfile />}
+            element={
+              <StudentProfile />
+            }
           />
 
         </Route>
 
-
-        {/* Admin */}
+        {/* ======================================
+            ADMIN ROUTES
+        ======================================= */}
 
         <Route
           path="/admin/dashboard"
-          element={<AdminDashboard />}
+          element={
+            <AdminDashboard />
+          }
         />
 
       </Routes>
-
     </BrowserRouter>
   );
 }
